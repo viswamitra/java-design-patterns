@@ -33,6 +33,14 @@ import org.apache.isis.applib.services.i18n.TranslatableString;
 @DomainService(repositoryFor = SimpleObject.class)
 @DomainServiceLayout(menuOrder = "10")
 public class SimpleObjects {
+  // endregion
+
+  // region > injected services
+
+  @javax.inject.Inject
+  DomainObjectContainer container;
+
+  // endregion
 
   // region > title
   public TranslatableString title() {
@@ -69,21 +77,16 @@ public class SimpleObjects {
     }
   }
 
+  /**
+   * Create simple object
+   */
   @Action(domainEvent = CreateDomainEvent.class)
   @MemberOrder(sequence = "3")
-  public SimpleObject create(final @ParameterLayout(named = "Name") String name) {
+  public SimpleObject create(@ParameterLayout(named = "Name") final String name) {
     final SimpleObject obj = container.newTransientInstance(SimpleObject.class);
     obj.setName(name);
     container.persistIfNotAlready(obj);
     return obj;
   }
 
-  // endregion
-
-  // region > injected services
-
-  @javax.inject.Inject
-  DomainObjectContainer container;
-
-  // endregion
 }

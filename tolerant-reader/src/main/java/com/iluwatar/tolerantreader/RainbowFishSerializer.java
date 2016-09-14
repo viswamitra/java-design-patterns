@@ -1,3 +1,25 @@
+/**
+ * The MIT License
+ * Copyright (c) 2014 Ilkka Seppälä
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package com.iluwatar.tolerantreader;
 
 import java.io.FileInputStream;
@@ -16,14 +38,13 @@ import java.util.Map;
  * added to the schema.
  *
  */
-public class RainbowFishSerializer {
+public final class RainbowFishSerializer {
+
+  private RainbowFishSerializer() {
+  }
 
   /**
    * Write V1 RainbowFish to file
-   * 
-   * @param rainbowFish
-   * @param filename
-   * @throws IOException
    */
   public static void writeV1(RainbowFish rainbowFish, String filename) throws IOException {
     Map<String, String> map = new HashMap<>();
@@ -40,10 +61,6 @@ public class RainbowFishSerializer {
 
   /**
    * Write V2 RainbowFish to file
-   * 
-   * @param rainbowFish
-   * @param filename
-   * @throws IOException
    */
   public static void writeV2(RainbowFishV2 rainbowFish, String filename) throws IOException {
     Map<String, String> map = new HashMap<>();
@@ -63,17 +80,11 @@ public class RainbowFishSerializer {
 
   /**
    * Read V1 RainbowFish from file
-   * 
-   * @param filename
-   * @return
-   * @throws IOException
-   * @throws ClassNotFoundException
    */
   public static RainbowFish readV1(String filename) throws IOException, ClassNotFoundException {
-    Map<String, String> map = null;
     FileInputStream fileIn = new FileInputStream(filename);
     ObjectInputStream objIn = new ObjectInputStream(fileIn);
-    map = (Map<String, String>) objIn.readObject();
+    Map<String, String> map = (Map<String, String>) objIn.readObject();
     objIn.close();
     fileIn.close();
     return new RainbowFish(map.get("name"), Integer.parseInt(map.get("age")), Integer.parseInt(map

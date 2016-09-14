@@ -1,3 +1,25 @@
+/**
+ * The MIT License
+ * Copyright (c) 2014 Ilkka Seppälä
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package com.iluwatar.servant;
 
 import java.util.ArrayList;
@@ -18,15 +40,13 @@ public class App {
 
   /**
    * Program entry point
-   * 
-   * @param args
    */
   public static void main(String[] args) {
     scenario(jenkins, 1);
     scenario(travis, 0);
   }
 
-  /*
+  /**
    * Can add a List with enum Actions for variable scenarios
    */
   public static void scenario(Servant servant, int compliment) {
@@ -44,16 +64,18 @@ public class App {
     servant.giveWine(k);
     servant.giveWine(q);
     // compliment
-    servant.GiveCompliments(guests.get(compliment));
+    servant.giveCompliments(guests.get(compliment));
 
     // outcome of the night
-    for (Royalty r : guests)
+    for (Royalty r : guests) {
       r.changeMood();
+    }
 
     // check your luck
-    if (servant.checkIfYouWillBeHanged(guests))
+    if (servant.checkIfYouWillBeHanged(guests)) {
       System.out.println(servant.name + " will live another day");
-    else
+    } else {
       System.out.println("Poor " + servant.name + ". His days are numbered");
+    }
   }
 }

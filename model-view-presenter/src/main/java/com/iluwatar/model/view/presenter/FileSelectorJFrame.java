@@ -1,3 +1,25 @@
+/**
+ * The MIT License
+ * Copyright (c) 2014 Ilkka Seppälä
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package com.iluwatar.model.view.presenter;
 
 import java.awt.Color;
@@ -26,7 +48,7 @@ public class FileSelectorJFrame extends JFrame implements FileSelectorView, Acti
   /**
    * The "OK" button for loading the file.
    */
-  private JButton OK;
+  private JButton ok;
 
   /**
    * The cancel button.
@@ -121,10 +143,10 @@ public class FileSelectorJFrame extends JFrame implements FileSelectorView, Acti
     /*
      * Add the OK button.
      */
-    this.OK = new JButton("OK");
-    this.panel.add(OK);
-    this.OK.setBounds(250, 50, 100, 25);
-    this.OK.addActionListener(this);
+    this.ok = new JButton("OK");
+    this.panel.add(ok);
+    this.ok.setBounds(250, 50, 100, 25);
+    this.ok.addActionListener(this);
 
     /*
      * Add the cancel button.
@@ -140,13 +162,11 @@ public class FileSelectorJFrame extends JFrame implements FileSelectorView, Acti
 
   @Override
   public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == this.OK) {
+    if (this.ok.equals(e.getSource())) {
       this.fileName = this.input.getText();
       presenter.fileNameChanged();
       presenter.confirmed();
-    }
-
-    else if (e.getSource() == this.cancel) {
+    } else if (this.cancel.equals(e.getSource())) {
       presenter.cancelled();
     }
   }

@@ -1,3 +1,25 @@
+/**
+ * The MIT License
+ * Copyright (c) 2014 Ilkka Seppälä
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package com.iluwatar.halfsynchalfasync;
 
 import java.util.concurrent.LinkedBlockingQueue;
@@ -21,17 +43,15 @@ import java.util.concurrent.LinkedBlockingQueue;
  * 
  * <p>
  * <i>APPLICABILITY</i> <br/>
- * <ul>
- * <li>UNIX network subsystems - In operating systems network operations are carried out
- * asynchronously with help of hardware level interrupts.</li>
- * <li>CORBA - At the asynchronous layer one thread is associated with each socket that is connected
+ * UNIX network subsystems - In operating systems network operations are carried out
+ * asynchronously with help of hardware level interrupts.<br/>
+ * CORBA - At the asynchronous layer one thread is associated with each socket that is connected
  * to the client. Thread blocks waiting for CORBA requests from the client. On receiving request it
  * is inserted in the queuing layer which is then picked up by synchronous layer which processes the
- * request and sends response back to the client.</li>
- * <li>Android AsyncTask framework - Framework provides a way to execute long running blocking
+ * request and sends response back to the client.<br/>
+ * Android AsyncTask framework - Framework provides a way to execute long running blocking
  * calls, such as downloading a file, in background threads so that the UI thread remains free to
- * respond to user inputs.</i>
- * </ul>
+ * respond to user inputs.<br/>
  * 
  * <p>
  * <i>IMPLEMENTATION</i> <br/>
@@ -121,7 +141,8 @@ public class App {
     try {
       Thread.sleep(i);
     } catch (InterruptedException e) {
+      System.out.println(e);
     }
-    return (i) * (i + 1) / 2;
+    return i * (i + 1) / 2;
   }
 }

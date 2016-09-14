@@ -22,6 +22,15 @@ import domainapp.dom.modules.simple.SimpleObjects;
 
 public class SimpleObjectCreate extends FixtureScript {
 
+  // endregion
+
+
+  // region > simpleObject (output)
+  private SimpleObject simpleObject;
+
+  @javax.inject.Inject
+  private SimpleObjects simpleObjects;
+
   // region > name (input)
   private String name;
 
@@ -36,17 +45,9 @@ public class SimpleObjectCreate extends FixtureScript {
     this.name = name;
     return this;
   }
-
-  // endregion
-
-
-  // region > simpleObject (output)
-  private SimpleObject simpleObject;
-
+  
   /**
    * The created simple object (output).
-   * 
-   * @return
    */
   public SimpleObject getSimpleObject() {
     return simpleObject;
@@ -57,15 +58,12 @@ public class SimpleObjectCreate extends FixtureScript {
   @Override
   protected void execute(final ExecutionContext ec) {
 
-    String name = checkParam("name", ec, String.class);
+    String paramName = checkParam("name", ec, String.class);
 
-    this.simpleObject = wrap(simpleObjects).create(name);
+    this.simpleObject = wrap(simpleObjects).create(paramName);
 
     // also make available to UI
     ec.addResult(this, simpleObject);
   }
-
-  @javax.inject.Inject
-  private SimpleObjects simpleObjects;
-
+  
 }

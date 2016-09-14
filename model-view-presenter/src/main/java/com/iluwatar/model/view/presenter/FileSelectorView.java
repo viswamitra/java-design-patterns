@@ -1,3 +1,25 @@
+/**
+ * The MIT License
+ * Copyright (c) 2014 Ilkka Seppälä
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 package com.iluwatar.model.view.presenter;
 
 /**
@@ -9,53 +31,53 @@ public interface FileSelectorView {
   /**
    * Opens the view.
    */
-  public void open();
+  void open();
 
   /**
    * Closes the view.
    */
-  public void close();
+  void close();
 
   /**
    * @return True, if the view is opened, false otherwise.
    */
-  public boolean isOpened();
+  boolean isOpened();
 
   /**
    * Sets the presenter component, to the one given as parameter.
    * 
    * @param presenter The new presenter component.
    */
-  public void setPresenter(FileSelectorPresenter presenter);
+  void setPresenter(FileSelectorPresenter presenter);
 
   /**
    * @return The presenter Component.
    */
-  public FileSelectorPresenter getPresenter();
+  FileSelectorPresenter getPresenter();
 
   /**
    * Sets the file's name, to the value given as parameter.
    * 
    * @param name The new name of the file.
    */
-  public void setFileName(String name);
+  void setFileName(String name);
 
   /**
    * @return The name of the file.
    */
-  public String getFileName();
+  String getFileName();
 
   /**
    * Displays a message to the users.
    * 
    * @param message The message to be displayed.
    */
-  public void showMessage(String message);
+  void showMessage(String message);
 
   /**
    * Displays the data to the view.
    * 
    * @param data The data to be written.
    */
-  public void displayData(String data);
+  void displayData(String data);
 }
